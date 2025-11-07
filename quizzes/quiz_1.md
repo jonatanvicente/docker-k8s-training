@@ -1,6 +1,4 @@
-# Module 1 Quiz: Containerization Basics
 
----
 
 **1. What is a main difference between containers and virtual machines?**  
 a) Containers require a hypervisor, VMs do not  
