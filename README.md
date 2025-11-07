@@ -1,5 +1,5 @@
 
-# <img src="images/docker_logo.png" alt="Docker Logo" width="50"/>   <img src="images/Kubernetes-Logo.png" alt="Kubernetes Logo" width="200"/> 
+# <img src="images/docker-logo.png" alt="Docker Logo" width="50"/>   <img src="images/Kubernetes-Logo.png" alt="Kubernetes Logo" width="200"/> 
 
 
 # Getting Started
