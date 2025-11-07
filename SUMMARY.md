@@ -6,7 +6,7 @@
 * [**Installations**](installations.md)
 ---
 * **Reference Guide**
-	- [**Module 1**. Docker Essentials](reference-guide/module_1.md)
+	- [**Module 1**. Containers Essentials](reference-guide/module_1.md)
 ---
 * **Labs and Quizzes**
 	- **Containerization Basics**
