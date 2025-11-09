@@ -1,4 +1,4 @@
-# 🧩 Lab 1: Containerization Basics
+# 🧪 Module 1 Lab: Containerization Basics
 
 ## 🧩 Exercise 1: Run Your First Container
 
