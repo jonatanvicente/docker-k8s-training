@@ -21,7 +21,7 @@
    COPY index.html /usr/share/nginx/html/index.html
 ```
 3. Build the image
-```
+```bash
 docker build -t mynginx:1.0 .
 ```
 4. Run a container using your image:
