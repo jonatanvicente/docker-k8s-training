@@ -25,7 +25,7 @@
 docker build -t mynginx:1.0 .
 ```
 4. Run a container using your image:
-```
+```bash
 docker run -d -p 8080:80 mynginx:1.0
 ```
 5. Verify by opening http://localhost:8080
@@ -42,11 +42,11 @@ Your custom NGINX page should be visible in the browser.
 **Steps:**
 
 1. Tag your image for Docker Hub:
-```
+```bash
 docker tag mynginx:1.0 <your-dockerhub-username>/mynginx:1.0
 ```
 2. Push the image:
-```
+```bash
 docker push <your-dockerhub-username>/mynginx:1.0
 ```
 
@@ -60,12 +60,12 @@ Your image is uploaded to Docker Hub and available for others to pull.
 **Steps:**
 
 1. Run a container with a volume:
-```
+```bash
 docker run -d -v mydata:/data alpine sh -c "while true; do echo 'Hello Volume' >> /data/log.txt; sleep 5; done"
 ```
 
 2. Access the volume content:
-```
+```bash
 docker run --rm -v mydata:/data alpine cat /data/log.txt
 ```
 
@@ -80,7 +80,7 @@ Data written by the first container is accessible even if the container stops.
 
 1. Create a folder shared with a text file.
 2. Run a container with a bind mount:
-```
+```bash
 docker run -it -v $(pwd)/shared:/mnt alpine sh
 ```
 
@@ -96,16 +96,16 @@ Changes in /mnt reflect in the host folder shared and vice versa.
 **Steps:**
 
 1. Create a user-defined bridge network:
-```
+```bash
 docker network create mynet
 ```
 2. Run two containers on this network:
-```
+```bash
 docker run -d --name container1 --network mynet nginx
 docker run -d --name container2 --network mynet nginx
 ```
 3. Inspect the network:
-```
+```bash
 docker network inspect mynet
 ```
 
@@ -120,11 +120,11 @@ Both containers are connected to mynet and can communicate using container names
 **Steps:**
 
 1. Run an Alpine container:
-```
+```bash
 docker run -it -e GREETING="Hello Docker" alpine sh
 ```
 2. Inside the container:
-```
+```bash
 echo $GREETING
 ```
 
@@ -139,15 +139,15 @@ You should see Hello Docker printed inside the container.
 **Steps:**
 
 1. Run a simple web container:
-```
+```bash
 docker run -d --name web --network mynet nginx
 ```
 2. Run a client container on the same network:
-```
+```bash
 docker run -it --rm --network mynet alpine sh
 ```
 3. Inside the client container, ping the web container:
-```
+```bash
 ping web
 ```
 

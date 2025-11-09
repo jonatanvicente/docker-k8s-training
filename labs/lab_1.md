@@ -7,7 +7,7 @@
 **Steps:**
 
 1. Open a terminal and run:
-```
+```bash
    docker run hello-world
 ```
 2. Observe the output message.
@@ -25,18 +25,18 @@
 
 **Steps:**
 1. Start a container:
-```
+```bash
 docker run -d -p 8080:80 --name mynginx nginx
 ```
 2. Open your browser and visit:
 👉 http://localhost:8080
 
 3. List all running containers:
-```
+```bash
 docker ps
 ```
 4. Stop and remove the container:
-```
+```bash
 docker stop mynginx
 docker rm mynginx
 ```
@@ -50,11 +50,11 @@ You should see the NGINX welcome page in your browser and understand how to star
 **Steps:**
 
 1. List all images:
-```
+```bash
 docker images
 ```
 2. List all containers (including stopped ones):
-```
+```bash
 docker ps -a
 ```
 3. Remove an image:
@@ -74,15 +74,15 @@ You’ll understand the relationship between containers and images, and how Dock
 **Steps:**
 
 1. Run a container:
-```
+```bash
 docker run -d --name mynginx2 nginx
 ```
 2. View logs:
-```
+```bash
 docker logs mynginx2
 ```
 3. Inspect detailed information:
-```
+```bash
     docker inspect mynginx2
 ```
 4. Identify the container’s IP address and mapped ports.
@@ -99,12 +99,12 @@ You can read and interpret container metadata, including networking details and 
 **Steps:**
 
 1. Run an Alpine container to execute a simple command:
-```
+```bash
 docker run --rm alpine echo "Hello from Docker!"
 ```
 2. Now, run an interactive container:
 
-```
+```bash
 docker run -it alpine sh
 ```
 3. Inside the shell:
