@@ -1,7 +1,7 @@
 
-## Module 1. Containers Essentials (2,5 hours)
+## ✨ Module 1. Containers Essentials (2,5 hours)
 
-**Goal:** Understand what containers are, how Docker works, and their role in modern DevOps.
+🧪 **Goal:** Understand what containers are, how Docker works, and their role in modern DevOps.
 
 - **Containerization Basics**
   - Difference between virtualization and containerization
@@ -22,9 +22,9 @@
 
 ---
 
-## Module 2. Using Docker: Images, Volumes, Networks (2.5 hours)
+## ✨ Module 2. Using Docker: Images, Volumes, Networks (2.5 hours)
 
-**Goal:** Learn to build, persist, and connect containers effectively.
+🧪 **Goal:** Learn to build, persist, and connect containers effectively.
 
 - **Docker Images**
   - Base vs custom images
@@ -45,9 +45,9 @@
 
 ---
 
-## Module 3. Orchestration with Kubernetes (5.0 hours)
+## ✨ Module 3. Orchestration with Kubernetes (5.0 hours)
 
-**Goal:** Manage containerized applications at scale using Kubernetes.
+🧪 **Goal:** Manage containerized applications at scale using Kubernetes.
 
 - **Introduction to Kubernetes**
   - Motivation for orchestration
@@ -70,9 +70,9 @@
 
 ---
 
-## Module 4. Security and Best Practices (5.0 hours)
+## ✨ Module 4. Security and Best Practices (5.0 hours)
 
-**Goal:** Secure Docker and Kubernetes environments through hardening and governance.
+🧪 **Goal:** Secure Docker and Kubernetes environments through hardening and governance.
 
 - **Docker Security**
   - Image signing and verification
@@ -93,9 +93,9 @@
 
 ---
 
-## Module 5. Architecture and Configuration Management in Docker and Kubernetes (5.0 hours)
+## ✨ Module 5. Architecture and Configuration Management in Docker and Kubernetes (5.0 hours)
 
-**Goal:** Learn how containers fit into modern architectures and how configuration is handled declaratively.
+🧪 **Goal:** Learn how containers fit into modern architectures and how configuration is handled declaratively.
 
 - **Containerized Architecture Patterns**
   - Microservices vs monolith
@@ -116,10 +116,10 @@
 
 ---
 
-## Workshop 
+## 🧩 Workshop 
 - Weekly Review
 
-**Goal:**-* Consolidate Modules 1–5.
+🧪 **Goal:** Consolidate Modules 1–5.
 **Activities:**
 - Build → Push → Run → Deploy workflow
 - Deploy a multi-tier app (e.g., frontend + backend + DB)
@@ -128,9 +128,9 @@
 
 ---
 
-## Module 6. Services and Networking in Containers and Kubernetes: Ingress (5.0 hours)
+## ✨ Module 6. Services and Networking in Containers and Kubernetes: Ingress (5.0 hours)
 
-**Goal:**-* Deep dive into container networking and Kubernetes ingress mechanisms.
+🧪 **Goal:**-* Deep dive into container networking and Kubernetes ingress mechanisms.
 
 - **Container Networking Model (CNM)**
   - Docker network drivers
@@ -149,9 +149,9 @@
 
 ---
 
-## Module 7. Main Platforms and Ecosystems in Kubernetes and Containers: OpenShift, Docker Compose, etc. (5.0 hours)
+## ✨ Module 7. Main Platforms and Ecosystems in Kubernetes and Containers: OpenShift, Docker Compose, etc. (5.0 hours)
 
-**Goal:**-* Explore the broader ecosystem beyond Docker and Kubernetes.
+🧪 **Goal:**-* Explore the broader ecosystem beyond Docker and Kubernetes.
 
 - **Ecosystem Overview**
   - CNCF Landscape
@@ -170,9 +170,9 @@
 
 ---
 
-## Module 8. CI/CD with Docker: Build and Deployment Pipelines (5.0 hours)
+## ✨ Module 8. CI/CD with Docker: Build and Deployment Pipelines (5.0 hours)
 
-**Goal:** Integrate Docker into continuous integration and deployment workflows.
+🧪 **Goal:** Integrate Docker into continuous integration and deployment workflows.
 
 - **Docker in CI/CD**
   - Building reproducible images
@@ -191,8 +191,9 @@
 
 ---
 
-## Module 9. Monitoring and Logging of Containers (5.0 hours)
-**Goal:** Learn to monitor, log, and trace containerized workloads.
+## ✨ Module 9. Monitoring and Logging of Containers (5.0 hours)
+
+🧪 **Goal:** Learn to monitor, log, and trace containerized workloads.
 
 - **Monitoring Basics**
   - Metrics types: resource, application, cluster
@@ -212,9 +213,9 @@
 
 ---
 
-## Workshop
+## 🧩 Workshop
 - Weekly Review
-**Goal:** Consolidate Modules 6–9.
+🧪 **Goal:** Consolidate Modules 6–9.
 
 **Activities:**
 - Deploy a complete monitored stack (Prometheus + Grafana + Fluentd)
