@@ -13,5 +13,7 @@
 	- **Module 1**. Containerization Basics
 		- [**Lab 1**](labs/lab_1.md)
 		- [**Quiz 1**](quizzes/quiz_1.md)
-	
+	- **Module 2**. Using Docker: Images, Volumes, Networks
+		- [**Lab 2**](labs/lab_2.md)
+		- [**Quiz 2**](quizzes/quiz_2.md)	
 
