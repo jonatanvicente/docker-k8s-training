@@ -7,12 +7,3 @@
 - Basic knowledge from Module 1  
 
 ---
-
-### 🧩 Exercise 1: Build a Custom Docker Image
-
-**Objective:** Create your own image from a Dockerfile.
-
-**Steps:**
-1. Create a folder called `myapp` and add a file `index.html` with sample content.
-
----
