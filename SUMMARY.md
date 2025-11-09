@@ -16,4 +16,6 @@
 	- **Module 2**. Using Docker: Images, Volumes, Networks
 		- [**Lab 2**](labs/lab_2.md)
 		- [**Quiz 2**](quizzes/quiz_2.md)	
-
+	- **Module 3**. Orchestration with Kubernetes
+		- [**Lab 3**](labs/lab_3.md)
+		- [**Quiz 3**](quizzes/quiz_3.md)	
