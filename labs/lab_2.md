@@ -8,7 +8,7 @@
 
 ---
 
-## 🧩 Exercise 1: Build a Custom Docker Image
+### 🧩 Exercise 1: Build a Custom Docker Image
 
 **Objective:** Create your own image from a Dockerfile.
 
@@ -35,7 +35,7 @@ Your custom NGINX page should be visible in the browser.
 
 ---
 
-## 🧩 Exercise 2: Tag and Push Image
+### 🧩 Exercise 2: Tag and Push Image
 
 **Objective:** Learn how to tag and push images to Docker Hub.
 
@@ -53,7 +53,9 @@ docker push <your-dockerhub-username>/mynginx:1.0
 **Expected Result:**
 Your image is uploaded to Docker Hub and available for others to pull.
 
-## 🧩 Exercise 3: Use Volumes for Data Persistence
+---
+
+### 🧩 Exercise 3: Use Volumes for Data Persistence
 
 **Objective:** Create a volume and persist data.
 
@@ -72,7 +74,9 @@ docker run --rm -v mydata:/data alpine cat /data/log.txt
 **Expected Result:**
 Data written by the first container is accessible even if the container stops.
 
-## 🧩 Exercise 4: Bind Mounts for Development
+---
+
+### 🧩 Exercise 4: Bind Mounts for Development
 
 **Objective:** Share a local folder with a container.
 
@@ -89,7 +93,9 @@ docker run -it -v $(pwd)/shared:/mnt alpine sh
 **Expected Result:**
 Changes in /mnt reflect in the host folder shared and vice versa.
 
-## 🧩 Exercise 5: Create and Inspect Docker Networks
+---
+
+### 🧩 Exercise 5: Create and Inspect Docker Networks
 
 **Objective:** Understand networking between containers.
 
@@ -112,8 +118,9 @@ docker network inspect mynet
 **Expected Result:**
 Both containers are connected to mynet and can communicate using container names.
 
+---
 
-## 🧩 Exercise 6: Environment Variables in Containers
+### 🧩 Exercise 6: Environment Variables in Containers
 
 **Objective:** Pass configuration to containers using environment variables.
 
@@ -131,8 +138,9 @@ echo $GREETING
 **Expected Result:**
 You should see Hello Docker printed inside the container.
 
+---
 
-## 🧩 Exercise 7: Multi-container Setup Simulation
+### 🧩 Exercise 7: Multi-container Setup Simulation
 
 **Objective:** Practice connecting multiple containers manually.
 
