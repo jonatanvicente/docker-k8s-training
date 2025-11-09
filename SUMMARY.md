@@ -8,8 +8,8 @@
 ---
 * **Reference Guide**
 	- [**Module 1**. Containerization Basics](reference-guide/module_1.md)
-	- [**Module 2**. Containerization Basics](reference-guide/module_2.md)
-	- [**Module 3**. Containerization Basics](reference-guide/module_3.md)
+	- [**Module 2**. Using Docker: Images, Volumes, Networks](reference-guide/module_2.md)
+	- [**Module 3**. Orchestration with Kubernetes](reference-guide/module_3.md)
 ---
 * **Labs and Quizzes**
 	- **Module 1**. Containerization Basics
