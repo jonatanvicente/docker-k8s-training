@@ -134,5 +134,3 @@ d) It improves performance of old containers
 
 ---
 
-### ✅ End of Quiz
-**Recommended next:** Hands-on lab — secure Docker images, apply RBAC and Network Policies, and scan images for vulnerabilities.
