@@ -142,13 +142,20 @@ spec:
 	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
 
 
-### 🧩 Namespaces: tidying the room
+### 🧩 Namespaces and Contexts: tidying the room
 
 **Steps:**
 
 1. Create two namespaces by applying the manifest ns.yml. 
-2. Verify the deployment using ```kubectl get deploy -n dev``` and ```kubectl get pods -n dev```
-3. **How many replicas are there in each one?**
-4. **Using DNSs**
-	- Create a ephimeral pod using 
+2. Verify the deployment using `kubectl get deploy -n dev` and `kubectl get pods -n dev`
+	- **How many replicas are there in each one?**
+4. **Using DNSs**. Apply ns-and-dns.yml
+	- Create an ephemeral pod using `kubectl run --rm -ti podtest3 --image=nginx:alpine -- sh`
+	- Try to reach another service using curl (`curl backend-k8s-hands-on`). What happens?
+	- Try it again using the full domain name [ServiceName].[NamespaceName].svc.cluster.local. Does it still not work?
+5. **Contexts**.
+	- Review the configuration options using `kubectl config view`
+	- Create a new context linked to a specific namespace. You can do this with `kubectl config set-context ci-context --namespace ci --cluster minikube --user=minikube`
+	- Switch to the new context using (`kubectl config use-context ci-context`)
+	- Can you see the default resources? Is it necessary to select the context? Explain why.
 
