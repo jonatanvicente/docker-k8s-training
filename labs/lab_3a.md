@@ -3,7 +3,9 @@
 **Goal:** Practice building, persisting, and connecting Kubernetes objects
 **Note:** You can view the result of executing the following commands and exercises using [Lens](https://k8slens.dev/) or another editor. However, we recommend using the command line at the beginning.
 
-### 🧩 kubectl: Using a poweful tool
+---
+
+### 🧩 kubectl: Using a powerful tool
 
 **Questions:**
 - What are the next commands used for?
@@ -14,6 +16,8 @@
 	- `kubectl apply -f pod.yaml`
 	- `kubectl run - -rm -ti [namePod] --image=[dockerImage] - - sh`. Creates a temporary pod using the image and opens its shell.
 	- `kubectl get pod [pod]` and `kubectl get pods`
+
+---
 
 ### 🧩 Pods: Creating pods
 
@@ -41,6 +45,8 @@
 	- `kubectl exec -it <name> -c <container> -- sh`
 - When you create a pod with 2 constainers inside, can you access one container from the other? Do they share the same network?
 
+---
+
 ### 🧩 ReplicaSets: Using ReplicaSets
 
 **Steps:**
@@ -48,6 +54,8 @@
 2. Delete one pod
 3. Verify that Kubernetes creates a new pod automatically
 4. Modify replicaset.yaml to increase the number of replicas. What happens?
+
+---
 
 ### 🧩 Deployments
 
@@ -85,8 +93,5 @@ spec:
 - What are the next commands used for?
 	- `kubectl get deployment --show-labels`
 	- `kubectl rollout status deployment [deployName]` and `kubectl rollout status deployment [deployName]`
-
-
-### 🧩 Services: the higher level
 
 

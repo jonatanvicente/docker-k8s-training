@@ -19,7 +19,8 @@
 		- [**Lab 2**](labs/lab_2.md)
 		- [**Quiz 2**](quizzes/quiz_2.md)	
 	- **Module 3**. Orchestration with Kubernetes
-		- [**Lab 3**](labs/lab_3.md)
+		- [**Lab 3a**. Kubectl, pods, replicaSets, deployments](labs/lab_3a.md)
+		- [**Lab 3b**. Services](labs/lab_3a.md)
 		- [**Quiz 3**](quizzes/quiz_3.md)	
 	- **Module 4**. Security and Best Practices
 		- [**Lab 4**](labs/lab_4.md)
