@@ -64,7 +64,8 @@ metadata:
     app: front
 ```
 - Verify it using `kubectl rollout history deployment [deploymentName]`. Can you see the annotation?
-5. Set the parameter revisionHistoryLimit to 1 to limit the revision history (see the excerpt below). Then reapply the deployment using `kubectl apply -f <fileName>`
+
+6. Set the parameter revisionHistoryLimit to 1 to limit the revision history (see the excerpt below). Then reapply the deployment using `kubectl apply -f <fileName>`
 ```yaml
 spec:
   revisionHistoryLimit: 1
@@ -74,11 +75,16 @@ spec:
       app: front
 ```
 
+7. Introduce a fake into the manifest: change the image name to name nginx:testfake to force an error.
+	- Execute `kubectl get pods`. Can you see the error?
+	- Execute `kubectl rollout history deployment [deploymentName]`. Is it possible to perform the rollback?
+
 **Questions:**
 - What are the next commands used for?
 	- `kubectl get deployment --show-labels`
 	- `kubectl rollout status deployment [deployName]` and `kubectl rollout status deployment [deployName]`
 
 
+### 🧩 Services: a higher level
 
-	
+
