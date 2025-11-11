@@ -48,7 +48,7 @@ _**Service**_
 	- Default Service type. The IP is only accessible from within the cluster node. Used for internal communication between Services. We **cannot expose** the service externally (you would need to expose a LAN or Wi-Fi IP to access it).
 	- It also acts as a **load balancer** between pods, which are managed by a Deployment.
 - **NodePort** 
-	- Allows us to expose the Service outside the cluster. It exposes the service through a port on the node, which has an IP accessible from outside, allowing access to the ClusterIP.
+	- **Allows us to expose the Service outside the cluster**. It exposes the service through a port on the node, which has an IP accessible from outside, allowing access to the ClusterIP.
 	- It opens a default port range (**30000–32767**), but not beyond the cluster. If not defined, NodePort will choose one automatically.
 	- Minikube does not expose NodePorts on your host IP (127.0.0.1) by default, as cloud Kubernetes clusters do.
 	- To access the port (from outside of k8s cluster), it is necessary to:

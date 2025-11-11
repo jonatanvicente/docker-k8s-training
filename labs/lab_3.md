@@ -75,7 +75,7 @@ metadata:
 ```
 - Verify it using `kubectl rollout history deployment [deploymentName]`. Can you see the annotation?
 
-6. Set the parameter revisionHistoryLimit to 1 to limit the revision history (see the excerpt below). Then reapply the deployment using `kubectl apply -f <fileName>`
+6. Set the parameter **revisionHistoryLimit** to 1 to limit the revision history (see the excerpt below). Then reapply the deployment using `kubectl apply -f <fileName>`
 ```yaml
 spec:
   revisionHistoryLimit: 1
@@ -85,7 +85,7 @@ spec:
       app: front
 ```
 
-7. Introduce a fake into the manifest: change the image name to name nginx:testfake to force an error.
+7. **Introduce a fake into the manifest**: change the image name to name nginx:testfake to force an error.
 	- Execute `kubectl get pods`. Can you see the error?
 	- Execute `kubectl rollout history deployment [deploymentName]`. Is it possible to perform the rollback?
 
@@ -107,7 +107,7 @@ spec:
 		- Service IP: Kubernetes guarantees the service IP (it does not change)
 		- Service port → spec > ports > port
 		- Pod ports where the Service redirects traffic → spec > ports > targetPort
-3. Introduce another type of Service (not default type) and redeploy it. Use `kubectl delete -f svc.yaml` and `kubectl apply -f svc2.yaml`
+3. Introduce another type of Service (default type, ClusterIP) and redeploy it. Use `kubectl delete -f svc.yaml` and `kubectl apply -f svc2.yaml`
 
 ```yaml
 apiVersion: v1 
@@ -125,3 +125,17 @@ spec:
       port: 8080 
       targetPort: 80 
 ```
+
+4. **NodePort**.
+	- Deploy nodeport.yml (svc.yaml is already deployed). It uses nodeport instead ClusterIP.
+	- Execute `kubectl get pods -l app=[front | backend`. **How many pods can you see?**
+	- Now execute `kubectl get svc`. **How many services are deployed?**
+	- **What port is exposing Nodeport?**
+
+5. **Port Forwarding**: Accessing from outside of k8s cluster (only for develop purposes)
+	- From localhost, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port]`
+	- To access from any IP, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port] --address 0.0.0.0`	
+	- Try to do it using Lens
+
+6. **minikube tunnel**. 
+	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
