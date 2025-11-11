@@ -116,18 +116,6 @@
 
 ---
 
-## 🧩 Workshop 
-- Weekly Review
-
-🧪 **Goal:** Consolidate Modules 1–5.
-**Activities:**
-- Build → Push → Run → Deploy workflow
-- Deploy a multi-tier app (e.g., frontend + backend + DB)
-- Practice security scanning and configuration management
-- Review key `kubectl` and `docker` commands
-
----
-
 ## ✨ Module 6. Services and Networking in Containers and Kubernetes: Ingress (5.0 hours)
 
 🧪 **Goal:**-* Deep dive into container networking and Kubernetes ingress mechanisms.
@@ -211,14 +199,3 @@
   - Metrics-driven alerting
   - Log structure and labeling
 
----
-
-## 🧩 Workshop
-- Weekly Review
-🧪 **Goal:** Consolidate Modules 6–9.
-
-**Activities:**
-- Deploy a complete monitored stack (Prometheus + Grafana + Fluentd)
-- Configure Ingress and secure it with TLS
-- Create a CI/CD pipeline that builds and deploys to Kubernetes
-- Review alerting and logging configuration
