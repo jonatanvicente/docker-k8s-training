@@ -15,30 +15,31 @@ References:
 
 ### Tips
 
-_**Pods**__
+_**Pods**_
 
-- Un pod NO puede actualizarse a sí mismo. Es necesario eliminarlo y volverlo a crear o bien actualizar desde una jerarquía superior (Deployment o ReplicaSet).
-- No crear los pods a mano (salvo los efímeros o temporales), fuera de controladores como Deployment o ReplicaSet. Crearlos siempre a partir de estructuras superiores (ReplicaSets, Deployments). 
-- NUNCA crear PODs planos, SIN OWNER. Deben ser creados por objetos de mayor nivel (replicaSets, por ejemplo).
+- A pod cannot update itself. You must either delete and recreate it, or update it through a higher-level object (Deployment or ReplicaSet).
+- Do not create pods manually (except for ephemeral or temporary pods). Always create them through higher-level controllers like ReplicaSets or Deployments.
+- Never create “flat” PODs **without an owner**. They must be created by higher-level objects (e.g., ReplicaSets).
+- If you label a pod without a label, and it matches another label that a ReplicaSet manages, the ReplicaSet will adopt the pod (including it in the requested number of replicas), and this is dangerous.
 
-    Si etiquetamos un pod sin label, y es coincidente con otra label que tenga un descriptor de replicaSet, el replicaSet ADOPTARÁ el pod (incluyéndolo en el número de réplicas que se le solicitan), Y ESTO ES PELIGROSO
 
 _**Deployment**_
 
 - Parameters:
-	- MaxUnavailable: Cuántos pods voy a permitir que mueran. Qué porcentaje voy a permitir que esté unavailble (no disponible), garantizando el resto de pods siempre disponibles. Default value = 25%
-	- MaxSearch: Cuánto voy a añadir al 100% para que se creen pods nuevos, cuánto voy a permitir escalar mientras se efectúa una tarea de actualización. Default value = 25%
+	- MaxUnavailable: How many pods you allow to be unavailable. Defines the percentage of pods that can be down while ensuring the rest remain available. Default value = 25%.
+	- MaxSearch: How many additional pods can be created above 100% during an update. Defines the scaling capacity while performing an update. Default value = 25%.
 
 _**ReplicaSet**_
 
-- Cambios de replicaSets en ejecución:
-	- Si cambiamos el file yaml en ejecución y ejecutamos apply, NO se actualizará nada. Es necesario borrar el pod. Entonces ReplicaSet actualiza pods empleando la descripción existente en el file
+- Changes to running ReplicaSets:
+	- If you change the YAML file and execute apply, nothing will update automatically. You must delete the pod. Then the ReplicaSet will create pods according to the description in the YAML file.
 
 
 _**Service**_
-- Service devolverá una IP única que será mantenida en el tiempo y que el cluster garantiza. No así con los pods: un pod puede morir, otro se levantará con otra IP. Un service tiene también un DNS único.
-- Necesitará tener un Endpoint al cual enrutar los datos: entrypoint.
-	- Si no especificamos otro, se creará de tipo ClusterIP (IP virtual no asociada a una MAC física).
+
+- A Service provides a stable IP address that is maintained over time and guaranteed by the cluster. This is not the case with pods, which can die and be replaced by a new pod with a different IP. A Service also has a unique DNS name.
+- A Service needs an Endpoint to route traffic to (entrypoint).
+	- If no type is specified, it defaults to ClusterIP (a virtual IP not associated with a physical MAC).
 
 
 ### Useful commands 
