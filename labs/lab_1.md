@@ -1,6 +1,6 @@
 # 🧪 Module 1 Lab: Containerization Basics
 
-## 🧩 Exercise 1: Run Your First Container
+### 🧩 Exercise 1: Run Your First Container
 
 **Objective:** Verify your Docker installation and understand what a container is.
 
@@ -19,7 +19,7 @@
 - You should see a message confirming that Docker is installed and working correctly.
 
 
-## 🧩 Exercise 2: Run and Manage a Web Server Container
+### 🧩 Exercise 2: Run and Manage a Web Server Container
 
 **Objective:** Run a simple web server using the official NGINX image.
 
@@ -43,7 +43,7 @@ docker rm mynginx
 **Expected Result:**
 You should see the NGINX welcome page in your browser and understand how to start/stop containers.
 
-## 🧩 Exercise 3: Explore Images and Containers
+### 🧩 Exercise 3: Explore Images and Containers
 
 **Objective:** Learn how to list and manage images and containers.
 
@@ -67,7 +67,7 @@ Try to remove an image that is in use — **what happens?**
 **Expected Result:**
 You’ll understand the relationship between containers and images, and how Docker stores them locally.
 
-## 🧩 Exercise 4: Inspect Containers and View Logs
+### 🧩 Exercise 4: Inspect Containers and View Logs
 
 **Objective:** Get deeper insights into a running container.
 
@@ -91,7 +91,7 @@ docker logs mynginx2
 You can read and interpret container metadata, including networking details and configuration.
 
 
-## 🧩 Exercise 5: Create a Custom Command Container
+### 🧩 Exercise 5: Create a Custom Command Container
 
 
 **Objective:** Run a lightweight command in a temporary container.

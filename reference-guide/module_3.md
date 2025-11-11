@@ -13,5 +13,5 @@ References:
 
 ### Useful commands 
 
-
+- `apk add -U <package>`. Install packages needed into an Alpine image
 
