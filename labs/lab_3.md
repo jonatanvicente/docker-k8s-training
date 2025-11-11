@@ -14,7 +14,7 @@
 	- `kubectl api-resources`
 	- `kubectl get all`
 	- `kubectl apply -f pod.yaml`
-	- `kubectl run - -rm -ti [namePod] --image=[dockerImage] - - sh`. Creates a temporary pod using the image and opens its shell.
+	- `kubectl run - -rm -ti [namePod] --image=[dockerImage] -- sh`. Creates a temporary pod using the image and opens its shell.
 	- `kubectl get pod [pod]` and `kubectl get pods`
 
 ---
@@ -43,7 +43,7 @@
 	- `kubectl describe <name>`
 	- `kubectl logs <name> -c <container>`
 	- `kubectl exec -it <name> -c <container> -- sh`
-- When you create a pod with 2 constainers inside, can you access one container from the other? Do they share the same network?
+- When you create a pod with 2 constainers inside, **can you access one container from the other? Do they share the same network?**
 
 ---
 
@@ -53,7 +53,7 @@
 1. Deploy the replicaset.yaml file provided in the project
 2. Delete one pod
 3. Verify that Kubernetes creates a new pod automatically
-4. Modify replicaset.yaml to increase the number of replicas. What happens?
+4. Modify replicaset.yaml to increase the number of replicas. **What happens?**
 
 ---
 
@@ -127,6 +127,7 @@ spec:
 ```
 
 4. **NodePort**.
+
 	- Deploy nodeport.yml (svc.yaml is already deployed). It uses nodeport instead ClusterIP.
 	- Execute `kubectl get pods -l app=[front | backend`. **How many pods can you see?**
 	- Now execute `kubectl get svc`. **How many services are deployed?**
@@ -139,3 +140,15 @@ spec:
 
 6. **minikube tunnel**. 
 	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
+
+
+### 🧩 Namespaces: tidying the room
+
+**Steps:**
+
+1. Create two namespaces by applying the manifest ns.yml. 
+2. Verify the deployment using ```kubectl get deploy -n dev``` and ```kubectl get pods -n dev```
+3. **How many replicas are there in each one?**
+4. **Using DNSs**
+	- Create a ephimeral pod using 
+

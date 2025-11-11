@@ -62,5 +62,5 @@ _**Service**_
 
 ### Useful commands 
 
-- `apk add -U <package>`. Install packages needed into an Alpine image
+- `apk add -U <package>`. Install packages into an Alpine image
 
