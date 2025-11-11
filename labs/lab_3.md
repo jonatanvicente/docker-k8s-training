@@ -1,6 +1,6 @@
 # 🧪 Module 3 Lab: Orchestration with Kubernetes
 
-**Goal:** Practice building, persisting, and connecting Kubernetes objects
+**Goal:** Practice building, persisting, and connecting Kubernetes objects 
 **Note:** You can view the result of executing the following commands and exercises using [Lens](https://k8slens.dev/) or another editor. However, we recommend using the command line at the beginning.
 
 ---
@@ -73,7 +73,7 @@ metadata:
   labels:
     app: front
 ```
-- Verify it using `kubectl rollout history deployment [deploymentName]`. Can you see the annotation?
+- Verify it using `kubectl rollout history deployment [deploymentName]`. **Can you see the annotation?**
 
 6. Set the parameter **revisionHistoryLimit** to 1 to limit the revision history (see the excerpt below). Then reapply the deployment using `kubectl apply -f <fileName>`
 ```yaml
@@ -95,7 +95,6 @@ spec:
 	- `kubectl rollout status deployment [deployName]` and `kubectl rollout status deployment [deployName]`
 
 ---
-
 
 ### 🧩 Services: the higher level
 
@@ -141,6 +140,7 @@ spec:
 6. **minikube tunnel**. 
 	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
 
+---
 
 ### 🧩 Namespaces and Contexts: tidying the room
 
@@ -151,11 +151,33 @@ spec:
 	- **How many replicas are there in each one?**
 4. **Using DNSs**. Apply ns-and-dns.yml
 	- Create an ephemeral pod using `kubectl run --rm -ti podtest3 --image=nginx:alpine -- sh`
-	- Try to reach another service using curl (`curl backend-k8s-hands-on`). What happens?
-	- Try it again using the full domain name [ServiceName].[NamespaceName].svc.cluster.local. Does it still not work?
+	- Try to reach another service using curl (`curl backend-k8s-hands-on`). **What happens?**
+	- Try it again using the full domain name [ServiceName].[NamespaceName].svc.cluster.local. **Does it still not work?**
 5. **Contexts**.
 	- Review the configuration options using `kubectl config view`
 	- Create a new context linked to a specific namespace. You can do this with `kubectl config set-context ci-context --namespace ci --cluster minikube --user=minikube`
 	- Switch to the new context using (`kubectl config use-context ci-context`)
-	- Can you see the default resources? Is it necessary to select the context? Explain why.
+	- **Can you see the default resources? Is it necessary to select the context? Explain why.**
+
+---
+
+### 🧩 Probes: is there anybody?
+
+**Steps:**
+
+1. **Liveness**:
+	- Apply liveness-cmd.yml.
+	- Liveness sequence:
+		- Every 5 seconds it performs a cat on the file. When it reaches the 35-second mark, it will fail.
+		- Kubernetes will restart the container inside the pod. After another 35 seconds, it will fail again.
+		- This sequence will repeat several times until it enters **CrashLoopBackOff**, which means Kubernetes tried multiple times but a bug causes the container to crash, and it will stop restarting it.
+	- **Commands sequence used:**
+		- `kubectl get pods`
+		- `kubectl get pods -w` to watch events that occur on the pods
+		- `kubectl describe pod liveness-exec` 	to analyze the full event log
+
+2. **Readiness**
+	- Apply liveness-tcp.yml
+	- Analyze the manifest and keep an eye to this: **Readiness** deregisters the container's ports from the service if there is an error, but it does not restart the container.
+
 
