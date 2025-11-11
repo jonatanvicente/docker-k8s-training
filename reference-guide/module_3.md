@@ -1,7 +1,7 @@
 # ✨ Module 3 References: Orchestration with Kubernetes
 
 
-# <img src="images/k8s_structure.png" alt="k8s structure" width="50"/>
+# <img src="../images/k8s_structure.png" alt="k8s structure" width="50"/>
 
 
 References:
