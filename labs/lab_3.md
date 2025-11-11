@@ -180,4 +180,39 @@ spec:
 	- Apply liveness-tcp.yml
 	- Analyze the manifest and keep an eye to this: **Readiness** deregisters the container's ports from the service if there is an error, but it does not restart the container.
 
+---
+
+### 🧩 Volumes: static provisioning
+
+**Steps:**
+
+1. **Empty dir**
+	- Apply empty-dir.yml. 
+	- This pod contains a mountPath element and a volume emptyDir inside the Nginx logs directory (`/var/log/nginx`).The directory will be available as long as the pod is alive.
+	- If the container is recreated, the directory will still be available (Kubernetes detects if the container died and recreates it).
+	- Enter into the pod (`kubectl exec -it test-pd -- sh`) and create an empty file inside the `emptyDir` (`touch /var/log/nginx/test.log`).
+	- Kill the Nginx process (`pkill nginx`). The container dies. **What occurs now?** (Kubernetes recreates the container)
+	- Enter into the pod again and see that the file we created is still there (it’s linked to the pod, which didn’t die).
+	- This mechanism is often used for caching.
+
+2. **Persistent Volume / Persistent Volume Claim**
+	- Apply pv-pvc.yml (with no selectors)
+	- The steps are always the same:
+		- **Creation of a PersistentVolume (PV).** The place where data is stored physically.
+			- This can point to a physical location, a cloud location, etc. (For practice purposes, we will create a `hostPath` (directory) in the local cluster, and that folder will act as a PV.)
+		- **Creation of the Claim (PersistentVolumeClaim, PVC).** The entity that claims or points to the PV.
+		- **Creation of the volume inside the container,** which will point to the PVC.
+	- Review the right volume creation using:
+		- `kubectl get pv --show-labels`
+		- `kubectl describe pv task-pv-volume`
+		- `kubectl get pvc --show-labels`. Check the status; it is BOUND to the corresponding volume.
+	- Apply pv-pvc-selectors.yml (to force a Claim to use a specific PV.
+		- When checking the PVs, we see one PV **available** but another **bound** (`kubectl get pv --show-labels`).
+
+3. **Linking a PV/PVC to a pod**
+	- Apply pod-pvc.yml.
+
+### 🧩 Volumes: dynamic provisioning
+
+
 
