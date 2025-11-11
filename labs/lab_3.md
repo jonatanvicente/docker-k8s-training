@@ -33,7 +33,9 @@
 - What are the next commands used for?
 	- `kubectl apply -f <filename>`
 	- `kubectl get pods -l app=<label>`
-	- `kubectl delete pod [podName]`		
+	- `kubectl get pod [podName] -o yaml`	
+	- `kubectl delete pod [podName]`	
+	- `kubectl delete -f [fileName]`	
 	- `kubectl describe <name>`
 	- `kubectl logs <name> -c <container>`
 	- `kubectl exec -it <name> -c <container> -- sh`
@@ -85,6 +87,6 @@ spec:
 	- `kubectl rollout status deployment [deployName]` and `kubectl rollout status deployment [deployName]`
 
 
-### 🧩 Services: a higher level
+### 🧩 Services: the higher level
 
 
