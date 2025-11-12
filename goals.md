@@ -111,8 +111,6 @@
 - **Infrastructure as Code**
   - Managing Docker/Kubernetes with IaC tools (Terraform, Ansible)
   - Declarative vs imperative configuration
-- **Workshop Review**
-  - Deploying a small multi-container architecture
 
 ---
 
