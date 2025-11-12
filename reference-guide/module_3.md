@@ -115,6 +115,7 @@ Normally, each Pod runs a single main container, but Kubernetes allows multiple 
 - `kubectl describe [element] [elementName]`. 
 - `kubectl get [element]`
 - `kubectl get [element] -o yaml`
+- `kubectl get [element] -o wide`
 - `kubectl rollout status deployment [deployName]`
 - `kubectl exec -it <name> -- sh`
 

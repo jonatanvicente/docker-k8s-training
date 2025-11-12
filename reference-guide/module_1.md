@@ -9,4 +9,6 @@ References:
 
 - `docker logs` 
 - `docker inspect` 
+- `docker ps -a`
+- `docker container ls`
 
