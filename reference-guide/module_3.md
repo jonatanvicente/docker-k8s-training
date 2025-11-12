@@ -61,6 +61,48 @@ _**Service**_
 	- Creates only **external load balancers** (Kubernetes has no built-in option for this by default).
 	- It opens NodePorts on each node so users can access the balancer. When you create a LoadBalancer, you automatically create a NodePort, which in turn creates a ClusterIP.
 
+
+
+_**2 containers in one pod?**_
+
+Normally, each Pod runs a single main container, but Kubernetes allows multiple containers per Pod when they need to work tightly together — sharing the same network namespace, storage, and lifecycle. Recommended scenarios for using two (or more) containers per Pod:
+
+- 🧩 1. **Sidecar Pattern** (most common scenario).
+	- **Use case**: One container extends or enhances the functionality of the main app container.
+	- **Examples**: 
+		- A logging or monitoring agent that collects metrics from the main container.
+		- A proxy like Envoy or Fluent Bit forwarding traffic or logs.
+	- **Benefit**: Keeps responsibilities separated but within the same lifecycle.
+- 🛰️ 2. **Ambassador Pattern**
+	- **Use case**: One container acts as a proxy or intermediary between the main app and external services.
+	- **Examples**:
+		- A container proxying database connections or handling network routing.
+		- Managing secure connections (TLS termination, API gateway functions).
+	- **Benefit**: The main app stays simple while the ambassador container manages external communication.
+- 🧰 3. **Adapter Pattern**
+	- **Use case**: Transform or normalize data between the main container and external systems.
+	- **Examples**:
+		- A container adapting metrics formats before sending them to a monitoring system.
+		- A log formatter or data converter.
+	- **Benefit**: Decouples transformation logic from the main application.
+- ⚙️ 4. **Init + Main Containers**
+	- **Use case**: You need one container to perform initialization tasks before the main container runs.
+	- **Examples**:
+		- Downloading configuration files or secrets.
+		- Preparing shared volumes with data.
+	- **Benefit**: Clean separation between setup logic and runtime logic.
+- **📦 5. Shared Volume or Shared Network Scenarios**
+	- **Use case**: Containers need to share files or sockets directly.
+	- **Examples**:
+		- One container writes logs to a shared volume, another processes or ships them.
+		- Web server + file sync agent sharing the same directory.
+	- **Benefit**: Efficient inter-container communication without external networking.
+
+🚫 **When not to use multiple containers per Pod** 
+- When containers are independent and could scale separately.
+- When containers don’t need to share storage or network tightly.
+- When one container might outlive or restart separately — use separate Pods instead.
+
 ---
 
 ### Useful commands 
@@ -69,6 +111,7 @@ _**Service**_
 - `kubectl <command> --help`
 - `kubectl delete -f [manifest.yml]`
 - `kubectl apply -f [manifest.yml`
+- `kubectl logs [podName]`
 - `kubectl describe [element] [elementName]`. 
 - `kubectl get [element]`
 - `kubectl get [element] -o yaml`
