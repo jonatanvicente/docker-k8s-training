@@ -24,4 +24,7 @@
 	- **Module 4**. Security and Best Practices
 		- [**Lab 4**](labs/lab_4.md)
 		- [**Quiz 4**](quizzes/quiz_4.md)
+	- **Module 5**. Architecture and Configuration Management in Docker and Kubernetes
+		- [**Lab 5**](labs/lab_5.md)
+		- [**Quiz 5**](quizzes/quiz_5.md)		
 
