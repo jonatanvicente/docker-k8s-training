@@ -11,6 +11,9 @@ References:
 - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
 - [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+- [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+- [Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+- [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 ---
 
@@ -63,4 +66,12 @@ _**Service**_
 ### Useful commands 
 
 - `apk add -U <package>`. Install packages into an Alpine image
+- `kubectl <command> --help`
+- `kubectl delete -f [manifest.yml]`
+- `kubectl apply -f [manifest.yml`
+- `kubectl describe [element] [elementName]`. 
+- `kubectl get [element]`
+- `kubectl get [element] -o yaml`
+- `kubectl rollout status deployment [deployName]`
+- `kubectl exec -it <name> -- sh`
 

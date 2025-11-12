@@ -86,13 +86,13 @@ spec:
 ```
 
 7. **Introduce a fake into the manifest**: change the image name to name nginx:testfake to force an error.
-	- Execute `kubectl get pods`. Can you see the error?
-	- Execute `kubectl rollout history deployment [deploymentName]`. Is it possible to perform the rollback?
+	- Execute `kubectl get pods`. **Can you see the error?**
+	- Execute `kubectl rollout history deployment [deploymentName]`. **Is it possible to perform the rollback?**
 
 **Questions:**
 - What are the next commands used for?
 	- `kubectl get deployment --show-labels`
-	- `kubectl rollout status deployment [deployName]` and `kubectl rollout status deployment [deployName]`
+	- `kubectl rollout status deployment [deployName]` and `kubectl rollout history deployment [deployName]`
 
 ---
 
@@ -211,8 +211,22 @@ spec:
 
 3. **Linking a PV/PVC to a pod**
 	- Apply pod-pvc.yml.
+	- In addition to the PV/PVC, we add a Deployment with a Pod that mounts the volume
+	- When checking the created Pod, we can see the Mount (`kubectl describe pod xxxx`)
+	- Enter the Pod and access MySQL via cmd
+	- Create a database
+	- Now exit and delete the Pod. **The ReplicaSet recreates the Pod**
+	- When entering MySQL again, the database created in the previous Pod can be seen :)
+
+
 
 ### 🧩 Volumes: dynamic provisioning
 
+**Steps:**
 
-
+1. Apply storage-class.yml. **K8s will create the PV if a PVC doesn’t find one available.** This is done using a storageClass
+2. We create the PVC and check it (kubectl get pvc). It appears linked to a PV.
+	- `kubectl get pv` shows a standard hostPath PV (the one allowed by Minikube) that was created by K8s.
+	- This storageClass could be a dynamic storage from AWS, Google Cloud, Azure, etc. (provided by a production K8s installation).
+	- **Note**: the default ReclaimPolicy is Delete, which is dangerous (dynamic PVs will be deleted if we delete the PVC). When deleting the PVC (`kubectl delete -f storage-class.yml`), the PV is also deleted.
+	- `kubectl describe pv [pvname]` allows us to see the path where Minikube installed it (it will be accessible inside the Minikube container). This resource is dynamic. When creating the Claim, the PV is automatically created.	
