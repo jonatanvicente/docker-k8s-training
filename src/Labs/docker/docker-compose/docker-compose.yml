@@ -1,6 +1,6 @@
 x-custom-metadata:
   version: 1.0.0
-  last-updated: 2025-10-16
+  last-updated: 2025-13-11
 
 services:
   sonarqube:
@@ -9,8 +9,8 @@ services:
     environment:
       - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
     networks:
-      sonarqube-dev:
-        ipv4_address: 152.18.0.2  #Docker reserves 1 to gateway
+      k8s-dev:
+        ipv4_address: 142.18.0.2  #Docker reserves 1 to gateway
     volumes:
       - ./sonar/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties:ro
       - sonarqube_data:/opt/sonarqube/data
@@ -23,33 +23,32 @@ services:
     restart: unless-stopped
 
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:alpine
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - portainer_data_dev:/data
     ports:
       - '9001:9000'
       - '9444:9443'
     restart: unless-stopped
     networks:
-      sonarqube-dev:
-        ipv4_address: 152.18.0.3
+      k8s-dev:
+        ipv4_address: 142.18.0.3
 
   jenkins:
-    image: jenkins/jenkins:lts-jdk21
+    image: jenkins/jenkins:2.528.2-lts-jdk21
     container_name: jenkins
     volumes:
       - ./jenkins/conf:/var/jenkins_home
-      - ~/tmp/Labs:/opt/sonar-jenkins-training
     ports:
       - '8080:8080'
       - '50000:50000'
     restart: on-failure
     networks:
-      sonarqube-dev:
-        ipv4_address: 152.18.0.4
+      k8s-dev:
+        ipv4_address: 142.18.0.4
 
   mailhog:
     image: mailhog/mailhog:latest
@@ -58,20 +57,20 @@ services:
       - '1025:1025' #SMTP
       - '8025:8025' #Web UI
     networks:
-      sonarqube-dev:
-        ipv4_address: 152.18.0.5
+      k8s-dev:
+        ipv4_address: 142.18.0.5
 
 volumes:
   sonarqube_data:
   sonarqube_logs:
   sonarqube_temp:
-  portainer_data:
+  portainer_data_dev:
 
 networks:
-    sonarqube-dev:
+    k8s-dev:
       driver: bridge
       ipam:
         driver: default
         config:
-          - subnet: 152.18.0.0/24
+          - subnet: 142.18.0.0/24
 
