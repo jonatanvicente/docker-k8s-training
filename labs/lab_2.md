@@ -41,6 +41,12 @@ Your custom NGINX page should be visible in the browser.
 
 **Steps:**
 
+
+1. Log in into Docker hub using:
+```bash
+docker login -u <your_user>
+```
+
 1. Tag your image for Docker Hub:
 ```bash
 docker tag mynginx:1.0 <your-dockerhub-username>/mynginx:1.0

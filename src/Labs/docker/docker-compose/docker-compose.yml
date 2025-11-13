@@ -1,0 +1,77 @@
+x-custom-metadata:
+  version: 1.0.0
+  last-updated: 2025-10-16
+
+services:
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    networks:
+      sonarqube-dev:
+        ipv4_address: 152.18.0.2  #Docker reserves 1 to gateway
+    volumes:
+      - ./sonar/conf/sonar.properties:/opt/sonarqube/conf/sonar.properties:ro
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_temp:/opt/sonarqube/temp
+    ports:
+      - '9000:9000'   # external port:internal port
+      - '8600:8600/tcp'
+      - '8600:8600/udp'
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports:
+      - '9001:9000'
+      - '9444:9443'
+    restart: unless-stopped
+    networks:
+      sonarqube-dev:
+        ipv4_address: 152.18.0.3
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins
+    volumes:
+      - ./jenkins/conf:/var/jenkins_home
+      - ~/tmp/Labs:/opt/sonar-jenkins-training
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    restart: on-failure
+    networks:
+      sonarqube-dev:
+        ipv4_address: 152.18.0.4
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog
+    ports:
+      - '1025:1025' #SMTP
+      - '8025:8025' #Web UI
+    networks:
+      sonarqube-dev:
+        ipv4_address: 152.18.0.5
+
+volumes:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_temp:
+  portainer_data:
+
+networks:
+    sonarqube-dev:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 152.18.0.0/24
+
