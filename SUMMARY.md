@@ -10,6 +10,9 @@
 	- [**Module 1**. Containerization Basics](reference-guide/module_1.md)
 	- [**Module 2**. Using Docker: Images, Volumes, Networks](reference-guide/module_2.md)
 	- [**Module 3**. Orchestration with Kubernetes](reference-guide/module_3.md)
+	- [**Module 4**. Security and Best Practices](reference-guide/module_4.md)
+	- [**Module 5**. Architecture and Configuration Management in Docker and Kubernetes](reference-guide/module_5.md)
+	- [**Module 6**. Services and Networking in Containers and Kubernetes](reference-guide/module_6.md)
 ---
 * **Labs and Quizzes**
 	- **Module 1**. Containerization Basics
