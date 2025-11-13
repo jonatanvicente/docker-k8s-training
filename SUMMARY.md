@@ -27,4 +27,8 @@
 	- **Module 5**. Architecture and Configuration Management in Docker and Kubernetes
 		- [**Lab 5**](labs/lab_5.md)
 		- [**Quiz 5**](quizzes/quiz_5.md)		
+	- **Module 6**. Services and Networking in Containers and Kubernetes
+		- [**Lab 6**](labs/lab_6.md)
+		- [**Quiz 6**](quizzes/quiz_6.md)
+
 
