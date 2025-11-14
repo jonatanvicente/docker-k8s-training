@@ -3,6 +3,14 @@ x-custom-metadata:
   last-updated: 2025-13-11
 
 services:
+  alpine:
+    image: alpine:latest
+    container_name: alpine_test
+    command: ["tail", "-f", "/dev/null"]
+    networks:
+      k8s-dev:
+        ipv4_address: 142.18.0.6 
+
   sonarqube:
     image: sonarqube:latest
     container_name: sonarqube
