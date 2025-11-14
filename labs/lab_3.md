@@ -45,6 +45,15 @@
 	- `kubectl exec -it <name> -c <container> -- sh`
 - When you create a pod with 2 constainers inside, **can you access one container from the other? Do they share the same network?**
 
+
+### 🧩 Pods: Several containers in one pod
+
+1. Execute `kubectl apply -f pod.yaml`
+2. Use `kubectl exec -ti doscont -c cont1 -- sh` to go into a pod
+3. Execute curl localhost:8082. **Can each container reach another one?** (They share the host; each container sees itself and the other)
+4. Add label to the command using `kubectl get pods -l app=backend` to see your pods
+
+
 ---
 
 ### 🧩 ReplicaSets: Using ReplicaSets
@@ -84,10 +93,25 @@ spec:
     matchLabels:
       app: front
 ```
+- The **revisionHistoryLimit** field in a Deployment controls how many old ReplicaSets Kubernetes keeps for rollback purposes. For example, if you set it to 3, Kubernetes will keep only the last 3 revisions of the Deployment’s ReplicaSets. Older ReplicaSets will be garbage collected automatically.
+	- You cannot see old revisions beyond what kubectl rollout history shows. If you want to keep full history, you need to increase **revisionHistoryLimit.**
+
+![Revision History](../images/revision_history.png)
 
 7. **Introduce a fake into the manifest**: change the image name to name nginx:testfake to force an error.
 	- Execute `kubectl get pods`. **Can you see the error?**
 	- Execute `kubectl rollout history deployment [deploymentName]`. **Is it possible to perform the rollback?**
+
+8. **Rollback mechanism**
+	- Check the status of the deployment: `kubectl rollout status deployment/<deployment-name>`. This will tell you if the deployment is stuck or failed
+	- Rollback to the previous revision: `kubectl rollout undo deployment/<deployment-name>`. This will revert the deployment to the last successful revision (by default, it rolls back one revision).
+	- (Optional) Rollback to a specific revision: `kubectl rollout undo deployment/<deployment-name> --to-revision=<revision-number>`
+	- Pause/resume deployments: 	
+	```
+	kubectl rollout pause deployment/<deployment-name>
+	kubectl rollout resume deployment/<deployment-name>
+	```
+
 
 **Questions:**
 - What are the next commands used for?
@@ -158,6 +182,8 @@ spec:
 	- Create a new context linked to a specific namespace. You can do this with `kubectl config set-context ci-context --namespace ci --cluster minikube --user=minikube`
 	- Switch to the new context using (`kubectl config use-context ci-context`)
 	- **Can you see the default resources? Is it necessary to select the context? Explain why.**
+	- Delete the context using `kubectl config delete-context <oldContext>`. Default context is active again.
+
 
 ---
 

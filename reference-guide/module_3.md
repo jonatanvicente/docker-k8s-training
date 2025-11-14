@@ -105,6 +105,17 @@ Normally, each Pod runs a single main container, but Kubernetes allows multiple 
 
 ---
 
+_**More than one namespace in one context?**_
+
+A context can only have one namespace. A context is just a combination of:
+- cluster
+- user
+- namespace
+
+And the namespace field accepts only one value.
+
+---
+
 ### Useful commands 
 
 - `apk add -U <package>`. Install packages into an Alpine image
