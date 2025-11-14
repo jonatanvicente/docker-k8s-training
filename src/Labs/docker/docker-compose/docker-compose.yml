@@ -6,7 +6,7 @@ services:
   alpine:
     image: alpine:latest
     container_name: alpine_test
-    command: ["tail", "-f", "/dev/null"]
+    command: ["tail", "-f", "/dev/null"]  # prevents the container from exiting immediately (Alpine has no default long-running process)
     networks:
       k8s-dev:
         ipv4_address: 142.18.0.6 
