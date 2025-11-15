@@ -5,9 +5,9 @@ metadata:
 spec:
   containers:
       - name: cont1
-        image: python:3.6-alpine
+        image: python:latest
         command: ['sh', '-c', 'echo cont1 > index.html && python -m http.server 8082']
       - name: cont2
-        image: python:3.6-alpine
-        command: ['sh', '-c', 'echo cont2 > index.html && python -m http.server 8082']
+        image: python:latest
+        command: ['sh', '-c', 'echo cont2 > index.html && python -m http.server 8083']
 

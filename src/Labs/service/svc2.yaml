@@ -1,18 +1,18 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata:
-  name: deployment-test1
+  name: deployment-test
   labels: 
-    app: backend
+    app: front
 spec: 
   replicas: 3
   selector: 
     matchLabels: 
-      app: backend
+      app: front
   template: 
     metadata:
       labels: 
-        app: backend 
+        app: front 
     spec:
       containers:
       - name: nginx 
@@ -21,15 +21,14 @@ spec:
 apiVersion: v1 
 kind: Service
 metadata:
-  name: my-service1
+  name: my-service
   labels:
-    app: backend
+    app: front
 spec:
-  type: NodePort
+  type: ClusterIP
   selector: 
-    app: backend
+    app: front
   ports:
     - protocol: TCP
       port: 8080 
       targetPort: 80 
-      nodePort: 30007 

@@ -108,11 +108,41 @@ Normally, each Pod runs a single main container, but Kubernetes allows multiple 
 _**More than one namespace in one context?**_
 
 A context can only have one namespace. A context is just a combination of:
-- cluster
-- user
-- namespace
+1. cluster
+2. user
+3.  namespace. The namespace field accepts only one value.
 
-And the namespace field accepts only one value.
+You can have:
+- one cluster
+- multiple users
+- multiple namespaces
+- many combinations → each can become its own context
+
+---
+
+_**Port forwarding is only meant for development. What is the recommended approach in production?**_
+
+1. **Use Services**. Kubernetes Services provide stable networking to pods. Depending on your needs:
+	- ClusterIP (default) – Only reachable within the cluster (useful for internal communication between services).
+	- NodePort – Opens a port on all cluster nodes, so external traffic can reach your app via NodeIP:NodePort.
+	- LoadBalancer – If your cluster is in a cloud (AWS, GCP, Azure), this automatically provisions a cloud load balancer. This is the standard for production.
+	- ExternalName – Maps a service to an external DNS name.
+
+**Recommendation**: Use LoadBalancer for production external access, or ClusterIP + an Ingress for routing.
+
+2. **Ingress / Ingress Controller**. An Ingress provides HTTP/S routing from outside the cluster to your services, with features like TLS termination, path-based routing, and host-based routing.
+	- Works with an Ingress Controller like Nginx, Traefik, or Istio.
+	- Lets you manage multiple services under a single IP/domain.
+	- Scales better than exposing multiple NodePorts or LoadBalancers.
+
+3. **API Gateway or Service Mesh** (Optional). In larger setups:
+	- Service Mesh (Istio, Linkerd) for secure, observability-rich, internal communication.
+	- API Gateway (Kong, Ambassador, etc.) for controlling external traffic to multiple services.
+
+✅ Summary
+
+**Development:** kubectl port-forward is fine.
+**Production:** Expose services via LoadBalancer or Ingress, not direct port-forwarding. Avoid NodePort unless you have specific reasons.
 
 ---
 

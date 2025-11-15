@@ -27,8 +27,7 @@
 3. Verify that a new pod exists
 4. Delete the pod
 5. Modify pod.yaml to add another pod and reapply the manifest
-6. Create a new manifest called **containers.yml**. Include 2 containers instead just one and apply it
-7. Create a new manifest called **labels.yml**. Add the labels 'app' and 'env' in the metadata section
+6. Create a new manifest called **labels.yml**. Add the labels 'app' and 'env' in the metadata section
 
 **Keep an eye to this:**
 - A container cannot update itself. It requires a higher-level object
@@ -48,11 +47,11 @@
 
 ### 🧩 Pods: Several containers in one pod
 
-1. Execute `kubectl apply -f pod.yaml`
-2. Use `kubectl exec -ti doscont -c cont1 -- sh` to go into a pod
-3. Execute curl localhost:8082. **Can each container reach another one?** (They share the host; each container sees itself and the other)
-4. Add label to the command using `kubectl get pods -l app=backend` to see your pods
-
+1. Execute `kubectl apply -f containers.yaml`. 
+2. This manifest defines a Pod with two containers. Each container runs a Python server. You can verify that each one is running correctly with: `kubectl logs doscont -c [cont1 | cont2]`
+3. Enter one of the containers using `kubectl exec -ti doscont -c cont1 -- sh`
+4. Run `curl localhost:8082` and `curl localhost:8083`. What happens? Why can you reach both addresses? (Hint: They share the same network namespace, so each container can reach itself and the other one)
+5. Update the Deployment so both containers use the same port. What happens?
 
 ---
 
@@ -93,8 +92,8 @@ spec:
     matchLabels:
       app: front
 ```
-- The **revisionHistoryLimit** field in a Deployment controls how many old ReplicaSets Kubernetes keeps for rollback purposes. For example, if you set it to 3, Kubernetes will keep only the last 3 revisions of the Deployment’s ReplicaSets. Older ReplicaSets will be garbage collected automatically.
-	- You cannot see old revisions beyond what kubectl rollout history shows. If you want to keep full history, you need to increase **revisionHistoryLimit.**
+- The **revisionHistoryLimit** field in a Deployment controls how many old ReplicaSets Kubernetes keeps for rollback purposes. For example, if you set it to 3, Kubernetes will keep only the last 3 revisions of the Deployment’s ReplicaSets. **Older ReplicaSets will be garbage collected automatically.**
+	- **You cannot see old revisions beyond what kubectl rollout history shows**. If you want to keep full history, you need to increase **revisionHistoryLimit.**
 
 ![Revision History](../images/revision_history.png)
 
@@ -128,9 +127,10 @@ spec:
 2. Observe the following:
 	- Port mapping and entry sequence:
 		- Service IP: Kubernetes guarantees the service IP (it does not change)
-		- Service port → spec > ports > port
+		- Service port → spec > ports > port > maps to a port on your machine
 		- Pod ports where the Service redirects traffic → spec > ports > targetPort
-3. Introduce another type of Service (default type, ClusterIP) and redeploy it. Use `kubectl delete -f svc.yaml` and `kubectl apply -f svc2.yaml`
+		- **ClusterIP** is the default service. It is a **load balancer between pods**, which will be managed by a Deployment.
+3. Introduce another type of Service (default type, ClusterIP) and redeploy it (use svc2.yaml). Use `kubectl delete -f svc.yaml` and `kubectl apply -f svc2.yaml`
 
 ```yaml
 apiVersion: v1 
@@ -149,20 +149,27 @@ spec:
       targetPort: 80 
 ```
 
-4. **NodePort**.
+4. **Port Forwarding**: Accessing from outside of k8s cluster (only for develop purposes)
+	- From localhost, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port]`
+		- In the example, `kubectl port-forward service/my-service -n default 8081:8080`.
+			- Keep in mind: forward redirects **service > spec > ports > port** to a port on host
+	- To access from any IP, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port] --address 0.0.0.0`	
+	- Try to do it using Lens and redirects to the port 8080 as well
+	- Check the redirections to localhost:8080 and 8081 running correctly. Everything is ok? What is happening?
+
+
+5. **minikube tunnel**. 
+	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
+
+
+6. **NodePort**.
 
 	- Deploy nodeport.yml (svc.yaml is already deployed). It uses nodeport instead ClusterIP.
 	- Execute `kubectl get pods -l app=[front | backend`. **How many pods can you see?**
 	- Now execute `kubectl get svc`. **How many services are deployed?**
 	- **What port is exposing Nodeport?**
+	- Forward the port using `kubectl port-forward service/my-service1 -n default 8081:8080`. Can you access index.html from nginx?
 
-5. **Port Forwarding**: Accessing from outside of k8s cluster (only for develop purposes)
-	- From localhost, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port]`
-	- To access from any IP, execute `kubectl port-forward service/[myService] -n [namespace] [external_port]:[pod_port] --address 0.0.0.0`	
-	- Try to do it using Lens
-
-6. **minikube tunnel**. 
-	- To make available any service, we can make a tunnel executing `minikube service ingress-nginx-controller -n ingress-nginx  --url [url]`	
 
 ---
 
@@ -205,6 +212,95 @@ spec:
 2. **Readiness**
 	- Apply liveness-tcp.yml
 	- Analyze the manifest and keep an eye to this: **Readiness** deregisters the container's ports from the service if there is an error, but it does not restart the container.
+
+---
+
+### 🧩 ConfigMaps: Config management using cmd
+
+**Steps:**
+
+1. Create the Nginx config file in `configmaps-examples`.
+2. Create the ConfigMap with the command `kubectl create configmap nginx-config --from-file=configmaps-examples/nginx.conf`
+3. `kubectl describe cm nginx-config` shows the key (the file name by default) and all associated fields.
+4. We can create a ConfigMap with multiple files by providing the folder path: `kubectl create configmap nginx-config1 --from-file=configmaps-examples`
+5. We verify the content with two keys (`index.html` and `nginx.conf`) using: `kubectl describe cm nginx-config1`
+
+---
+
+### 🧩 ConfigMaps: Config management using manifests
+
+**_Volumes_**
+
+**Steps:**
+1. Analyze the example with volumes in cm-nginx-vol.yaml
+2. Creates a deployment to consume it
+
+
+**_Environment vars_**
+
+**Steps:**
+
+1. We will create another ConfigMap with a script and environment variables: the env vars will be consumed from the described ConfigMap. See `cm-nginx-env.yml`
+	- We create a script that echoes to the Nginx root folder, outputting to a file. This will be the script.
+2. We specify the script in a volume and mount the environment variables by referencing the indicated ConfigMap.
+3. We create a Pod, enter it, and validate the environment variables using env.
+4. We check the script created in /opt and execute it.
+	- `cat /usr/share/nginx/html/test.html` correctly captures the environment variables.
+
+
+---
+
+### 🧩 Secrets: Config management using manifests
+
+**_Secret from a txt file_**
+
+**Steps:**
+
+1. Use following commands:
+	- `kubectl create secret generic mysecret --from-file=./secret-files/test.txt`
+  - `kubectl get secrets -o yaml`
+  - `kubectl describe secrets mysecret`
+2. Secrets are codified in base64
+
+**_Secret from a manifest_**
+
+**Steps:**
+
+1. Use secret-data.yml and the commands above to analyze how K8s stores sensitive data.
+2. Use secret-stringdata.yml. StringData directly encodes the sensitive data.
+
+
+**_Hiding Credentials / Value Substitution_**
+
+**Steps:**
+
+1. Creation of a file with hidden secrets (secret-secure.yml). 
+	- Kubernetes does not correctly substitute placeholders when we provide values for environment variables.
+2. Hiding and setting values:
+	- We create a file referencing environment variables (`secret-secure_2.yml`).
+	- We use the tool envsubst to replace the file’s placeholders with the previously created environment variable values.
+	- We output to a new file not saved in version control (`envsubst < secret-secure_2.yml > tmp.yml`).
+	- We apply the new file (`kubectl apply -f tmp.yml`).
+
+
+**_Setting Credentials with Volumes_**
+
+**Steps:**
+
+1. Create a manifest with secrets and a Pod in `pod-vol-secret.yml`. Execute kubectl apply -f `pod-vol-secret.yml`
+2. The user/password are set in the secret using `stringData` (converted to base64).
+3. We create volumes that pass the credentials to files (user/password). Review the manifest to analyze
+4. Credentials can be loaded by reading the file
+5. Check the results entering in the container and using the command `kubectl get secret secret1 -o yaml`
+
+
+**_Using Credentials with Volumes + Environment Variables_**
+
+1. Create a manifest with secrets and a Pod in `pod-vol-and-envs.yml`.
+2. We create environment variables that point to the secret created above.
+	- `export VAR_NAME="value"`
+	- `echo $VAR_NAME`
+3. It is easier to load credentials as environment variables than by reading from a file (as in the previous example).
 
 ---
 
