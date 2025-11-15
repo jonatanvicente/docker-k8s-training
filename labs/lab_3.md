@@ -215,6 +215,23 @@ spec:
 
 ---
 
+### 🧩 Environment Variables: Everything in its place
+
+**Steps:**
+
+1. Execute env.yml.
+2. Enter into the container and execute `env` and `echo $[varName] ($VAR1)`
+3. Check the data managed by K8s using `kubectl get pods envar-demo -o yaml`
+4. Apply ref.yml
+5. Expose pod information to containers in ref.yml.
+6. To see configuration fields of the pod, execute `kubectl get pods envar-demo -o yaml` 
+7. We can retrieve this information and make it visible to the container using the fieldRef attribute.
+8. Enter the container (`kubectl exec -it dapi-envars-fieldref -- /bin/sh`).
+9. Check the environment (env) for values like MY_NODE_NAME ("minikube"), MY_POD_NAME ("dapi-envars-fieldref"), MY_POD_NAMESPACE, and MY_POD_IP.
+
+---
+
+
 ### 🧩 ConfigMaps: Config management using cmd
 
 **Steps:**
