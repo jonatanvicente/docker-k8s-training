@@ -144,7 +144,23 @@ _**Port forwarding is only meant for development. What is the recommended approa
 **Development:** kubectl port-forward is fine.
 **Production:** Expose services via LoadBalancer or Ingress, not direct port-forwarding. Avoid NodePort unless you have specific reasons.
 
+
 ---
+
+
+_**Steps to create Persistent Volume & Persistent Volume Claim**_
+
+The steps are always the same:
+
+1. **Create a PersistentVolume (PV)** – the place where data is physically stored.
+   - This can point to a physical location, a cloud storage, etc.
+   - (For practice purposes, we will create a `hostPath` directory in the local cluster, and that folder will act as a PV.)
+2. **Create the Claim (PersistentVolumeClaim, PVC)** – the entity that requests or binds to the PV.
+3. **Create the volume inside the container**, which will point to the PVC.
+
+
+---
+
 
 ### Useful commands 
 
