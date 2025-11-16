@@ -1,7 +1,7 @@
 # 🔧 Workshop 1
 
 
-### 🔧 Exercise 1: Docker Multi-Container App (Worker + NGINX)
+### ⚙️ Exercise 1: Docker Multi-Container App (Worker + NGINX)
 
 **Objective:** 
 Create a two-container Docker application using docker-compose where:
@@ -17,7 +17,7 @@ The URL http://localhost:8080/logs/shared.log should display the file growing in
 
 ---
 
-### 🔧 Exercise 2 – Kubernetes Multi-Container App (Worker + NGINX)
+### ⚙️ Exercise 2 – Kubernetes Multi-Container App (Worker + NGINX)
 
 **Objective:**
 Deploy a multi-container application in Kubernetes that extends Exercise 1, demonstrating orchestration, volume sharing, and basic probes.
