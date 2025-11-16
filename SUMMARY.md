@@ -13,6 +13,10 @@
 	- [**Module 4**. Security and Best Practices](reference-guide/module_4.md)
 	- [**Module 5**. Architecture and Configuration Management in Docker and Kubernetes](reference-guide/module_5.md)
 	- [**Module 6**. Services and Networking in Containers and Kubernetes](reference-guide/module_6.md)
+	- [**Module 7**. Main Platforms and Ecosystems in Kubernetes and Containers](reference-guide/module_6.md)
+	- [**Module 8**. CI/CD with Docker: Build and Deployment Pipelines](reference-guide/module_6.md)
+	- [**Module 9**. Monitoring and Logging of Containers](reference-guide/module_6.md)
+
 ---
 * **Labs and Quizzes**
 	- **Module 1**. Containerization Basics
@@ -34,5 +38,13 @@
 	- **Module 6**. Services and Networking in Containers and Kubernetes
 		- [**Lab 6**](labs/lab_6.md)
 		- [**Quiz 6**](quizzes/quiz_6.md)
-
+	- **Module 7**. Main Platforms and Ecosystems in Kubernetes and Containers
+		- [**Lab 7**](labs/lab_7.md)
+		- [**Quiz 7**](quizzes/quiz_7.md)
+	- **Module 8**. CI/CD with Docker: Build and Deployment Pipelines
+		- [**Lab 8**](labs/lab_8.md)
+		- [**Quiz 8**](quizzes/quiz_8.md)
+	- **Module 9**. Monitoring and Logging of Containers
+		- [**Lab 9**](labs/lab_9.md)
+		- [**Quiz 9**](quizzes/quiz_9.md)		
 
