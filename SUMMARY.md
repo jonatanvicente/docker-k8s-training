@@ -24,6 +24,7 @@
 	- **Module 3**. Orchestration with Kubernetes
 		- [**Lab 3**](labs/lab_3.md)
 		- [**Quiz 3**](quizzes/quiz_3.md)	
+	- [**Workshop 1**](labs/workshop_1.md)
 	- **Module 4**. Security and Best Practices
 		- [**Lab 4**](labs/lab_4.md)
 		- [**Quiz 4**](quizzes/quiz_4.md)
