@@ -272,9 +272,11 @@ spec:
 
 **Steps:**
 
-1. Apply storage-class.yml. **K8s will create the PV if a PVC doesn’t find one available.** This is done using a storageClass
-2. We create the PVC and check it (kubectl get pvc). It appears linked to a PV.
-	- `kubectl get pv` shows a standard hostPath PV (the one allowed by Minikube) that was created by K8s.
-	- This storageClass could be a dynamic storage from AWS, Google Cloud, Azure, etc. (provided by a production K8s installation).
-	- **Note**: the default ReclaimPolicy is Delete, which is dangerous (dynamic PVs will be deleted if we delete the PVC). When deleting the PVC (`kubectl delete -f storage-class.yml`), the PV is also deleted.
-	- `kubectl describe pv [pvname]` allows us to see the path where Minikube installed it (it will be accessible inside the Minikube container). This resource is dynamic. When creating the Claim, the PV is automatically created.	
+In Kubernetes, when you use dynamic volume provisioning, you don’t specify the location of the storage directly in the PV. Instead, it is handled by the StorageClass you define. The flow works like this:
+
+1. **Create a StorageClass** that defines the storage type and provider-specific parameters (AWS, GCP, Azure, etc.).
+2. In the StorageClass, **you indicate the appropriate provisioner** and, if needed, parameters like zone, volume type, IOPS, etc.
+3. When you create a PVC referencing that StorageClass, **Kubernetes automatically creates a remote PV** on the provider according to those parameters.
+	- **Note**: the default ReclaimPolicy is Delete, which is dangerous (dynamic PVs will be deleted if we delete the PVC). When deleting the PVC, the PV is also deleted.
+
+**See pvc-aws.yml to learn how to do it
