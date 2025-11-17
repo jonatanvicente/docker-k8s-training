@@ -3,7 +3,7 @@ kind: Deployment #visible con kubectl api-resources
 metadata:
   name: deployment-test
   annotations:
-    kubernetes.io/change-cause: "fake"
+    kubernetes.io/change-cause: "change port"
   labels:
     app: front
 spec: #ReplicaSet
@@ -19,6 +19,6 @@ spec: #ReplicaSet
     spec:
       containers:
       - name: nginx
-        image: nginx:fake
+        image: nginx:alpine
         ports:
-        - containerPort: 94 #qué puerto está utilizando este container. Útil para los services (podremos agrupar pods)
+        - containerPort: 100 #qué puerto está utilizando este container. Útil para los services (podremos agrupar pods)
