@@ -279,4 +279,4 @@ In Kubernetes, when you use dynamic volume provisioning, you don’t specify the
 3. When you create a PVC referencing that StorageClass, **Kubernetes automatically creates a remote PV** on the provider according to those parameters.
 	- **Note**: the default ReclaimPolicy is Delete, which is dangerous (dynamic PVs will be deleted if we delete the PVC). When deleting the PVC, the PV is also deleted.
 
-**See pvc-aws.yml to learn how to do it
+**See pvc-aws.yml to learn how to do it**
