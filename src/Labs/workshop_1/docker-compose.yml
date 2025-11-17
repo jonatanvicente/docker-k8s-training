@@ -1,0 +1,20 @@
+x-custom-metadata:
+  version: 1.0.0
+  last-updated: 2025-13-11
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - shared-data:/data                           # shared volume for log file
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro       # inject nginx.conf read-only from host
+
+  worker:
+    build: ./worker
+    volumes:
+      - shared-data:/data                           # same shared volume for writing logs
+
+volumes:
+  shared-data:
