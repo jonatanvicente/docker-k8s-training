@@ -3,7 +3,8 @@
 
 References:
 
-- [kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
+- [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)
 
 ---
 
