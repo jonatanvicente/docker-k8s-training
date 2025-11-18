@@ -110,8 +110,6 @@ Recent architecture decisions and features from Microsoft (and AKS) give insight
 
 ---
 
-References: 
-
 [1]: https://www.uber.com/en-GB/blog/migrating-ubers-compute-platform-to-kubernetes-a-technical-journey/?utm_source=chatgpt.com "Migrating Uber's Compute Platform to Kubernetes"
 [2]: https://www.uber.com/en-GB/blog/ubers-journey-to-ray-on-kubernetes-ray-setup/?utm_source=chatgpt.com "Uber's Journey to Ray on Kubernetes: Ray Setup"
 [3]: https://www.uber.com/en-GB/blog/migrating-large-scale-compute-workloads-to-kubernetes/?utm_source=chatgpt.com "Migrating Large-Scale Interactive Compute Workloads to ..."
