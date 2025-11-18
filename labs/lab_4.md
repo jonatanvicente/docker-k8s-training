@@ -125,7 +125,8 @@ _**Pod Quota**_
 **Steps:**
 
 1. Analyze and apply pod-quota.yml
-2. Fuerza la cantidad de réplicas del Deployment para que sobrepase la definición de ResourceQuota. ¿qué ocurre
+2. Force the number of replicas in the Deployment to exceed the ResourceQuota definition. What happens?
+
 
 
 _**Resource Quota**_
