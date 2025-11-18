@@ -16,6 +16,7 @@
 	- [**Module 7**. Main Platforms and Ecosystems in Kubernetes and Containers](reference-guide/module_7.md)
 	- [**Module 8**. CI/CD with Docker: Build and Deployment Pipelines](reference-guide/module_8.md)
 	- [**Module 9**. Monitoring and Logging of Containers](reference-guide/module_9.md)
+	- [**Success Case Studies**](reference-guide/success-case-studies.md)
 
 ---
 * **Labs and Quizzes**

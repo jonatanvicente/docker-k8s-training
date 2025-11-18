@@ -30,26 +30,26 @@ d) Use the same database for all environments
 
 **3. In a containerized architecture, what is the role of a sidecar container?**  
 a) Acts as a backup for failed containers  
-b) Extends the functionality of the main container  
-c) Manages storage volumes  
-d) Runs administrative scripts on the host  
+b) Manages storage volumes  
+c) Runs administrative scripts on the host  
+d) Extends the functionality of the main container  
 
 <details>
   <summary>Solution</summary>
-- b) Extends the functionality of the main container
+- d) Extends the functionality of the main container
 </details>
 
 ---
 
 **4. What Kubernetes resource is used to store non-sensitive configuration data?**  
-a) Secret  
-b) ConfigMap  
+a) ConfigMap  
+b) Secret  
 c) PersistentVolume  
 d) StatefulSet  
 
 <details>
   <summary>Solution</summary>
-- b) ConfigMap
+- a) ConfigMap
 </details>
 
 ---
@@ -96,12 +96,12 @@ d) Replace Kubernetes YAML manifests with shell scripts
 **8. Which tool is commonly used for managing Kubernetes infrastructure declaratively?**  
 a) Ansible  
 b) Jenkins  
-c) Terraform  
-d) Helm  
+c) Helm  
+d) Terraform  
 
 <details>
   <summary>Solution</summary>
-- c) Terraform
+- d) Terraform
 </details>
 
 ---
@@ -120,14 +120,14 @@ d) Imperative is used only in CI/CD pipelines
 ---
 
 **10. What is typically done in a workshop review at the end of this module?**  
-a) Reviewing theoretical concepts only  
-b) Deploying and testing a small multi-container architecture  
+a) Deploying and testing a small multi-container architecture  
+b) Reviewing theoretical concepts only  
 c) Writing documentation for all containers  
 d) Installing Kubernetes from scratch  
 
 <details>
   <summary>Solution</summary>
-- b) Deploying and testing a small multi-container architecture
+- a) Deploying and testing a small multi-container architecture
 </details>
 
 

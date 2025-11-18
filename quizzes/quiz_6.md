@@ -4,13 +4,13 @@
 
 **1. Which Docker network driver allows a container to share the host network namespace?**  
 a) bridge  
-b) host  
-c) none  
+b) none  
+c) host  
 d) overlay  
 
 <details>
   <summary>Solution</summary>
-- b) host
+- c) host
 </details>
 
 ---
@@ -30,9 +30,9 @@ d) Overlay is for host networking only
 
 **3. In Kubernetes, what is the purpose of the cluster networking model?**  
 a) Assign a shared IP to all pods  
-b) Ensure all pods can communicate directly without NAT  
-c) Assign static IPs manually for each pod  
-d) Disable pod-to-pod communication  
+b) Assign static IPs manually for each pod  
+c) Disable pod-to-pod communication  
+d) Ensure all pods can communicate directly without NAT  
 
 <details>
   <summary>Solution</summary>
@@ -69,26 +69,26 @@ d) ExternalName
 
 **6. What is a headless service used for in Kubernetes?**  
 a) To expose services externally via a cloud load balancer  
-b) To allow direct pod-to-pod communication without a ClusterIP  
-c) To provide a static IP to all pods  
+b) To provide a static IP to all pods  
+c) To allow direct pod-to-pod communication without a ClusterIP  
 d) To replace an Ingress controller  
 
 <details>
   <summary>Solution</summary>
-- b) To allow direct pod-to-pod communication without a ClusterIP
+- c) To allow direct pod-to-pod communication without a ClusterIP
 </details>
 
 ---
 
 **7. What is the main role of an Ingress in Kubernetes?**  
 a) Provide internal DNS for pods  
-b) Manage external HTTP/HTTPS access to services  
-c) Scale pods automatically  
-d) Persist data in volumes  
+b) Scale pods automatically  
+c) Persist data in volumes  
+d) Manage external HTTP/HTTPS access to services  
 
 <details>
   <summary>Solution</summary>
-- b) Manage external HTTP/HTTPS access to services
+- d) Manage external HTTP/HTTPS access to services
 </details>
 
 ---
@@ -107,8 +107,8 @@ d) ClusterIP
 ---
 
 **9. What is one key advantage of using annotations in an Ingress resource?**  
-a) Define pod CPU limits  
-b) Enable custom behavior like rewrites or rate limiting  
+a) Enable custom behavior like rewrites or rate limiting  
+b) Define pod CPU limits  
 c) Assign static IPs to pods  
 d) Replace ConfigMaps  
 
@@ -121,8 +121,8 @@ d) Replace ConfigMaps
 
 **10. How does the Gateway API differ from a traditional Ingress?**  
 a) It is used only for NodePort services  
-b) It provides more flexible traffic routing, including L4-L7, beyond HTTP  
-c) It replaces ClusterIP services entirely  
+b) It replaces ClusterIP services entirely  
+c) It provides more flexible traffic routing, including L4-L7, beyond HTTP  
 d) It only supports single-host networking  
 
 <details>

@@ -4,39 +4,39 @@
 
 **1. What type of metrics measure CPU and memory usage of a container?**  
 a) Application metrics  
-b) Resource metrics  
-c) Cluster metrics  
+b) Cluster metrics  
+c) Resource metrics  
 d) Log metrics  
 
 <details>
   <summary>Solution</summary>
-- b) Resource metrics
+- c) Resource metrics
 </details>
 
 ---
 
 **2. Which tool collects system-level metrics on Kubernetes nodes?**  
-a) cAdvisor  
-b) Node Exporter  
+a) Node Exporter  
+b) cAdvisor  
 c) Grafana  
 d) Fluentd  
 
 <details>
   <summary>Solution</summary>
-- b) Node Exporter
+- a) Node Exporter
 </details>
 
 ---
 
 **3. What is Prometheus mainly used for?**  
 a) Collecting logs  
-b) Storing and querying time-series metrics  
-c) Visualizing dashboards  
-d) Tracing distributed applications  
+b) Visualizing dashboards  
+c) Tracing distributed applications  
+d) Storing and querying time-series metrics  
 
 <details>
   <summary>Solution</summary>
-- b) Storing and querying time-series metrics
+- d) Storing and querying time-series metrics
 </details>
 
 ---
@@ -55,14 +55,14 @@ d) cAdvisor
 ---
 
 **5. What is the role of Grafana in monitoring?**  
-a) Collect metrics from nodes  
-b) Visualize metrics and build dashboards  
+a) Visualize metrics and build dashboards  
+b) Collect metrics from nodes  
 c) Aggregate container logs  
 d) Send alerts via email  
 
 <details>
   <summary>Solution</summary>
-- b) Visualize metrics and build dashboards
+- a) Visualize metrics and build dashboards
 </details>
 
 ---
@@ -95,9 +95,9 @@ d) Alerting
 
 **8. What is OpenTelemetry used for?**  
 a) Building dashboards  
-b) Collecting distributed traces and metrics from applications  
-c) Scanning Docker images  
-d) Scaling Kubernetes pods  
+b) Scanning Docker images  
+c) Scaling Kubernetes pods  
+d) Collecting distributed traces and metrics from applications  
 
 <details>
   <summary>Solution</summary>
@@ -108,24 +108,24 @@ d) Scaling Kubernetes pods
 
 **9. Why is structured logging recommended?**  
 a) It reduces CPU usage  
-b) Easier parsing, filtering, and correlation of logs  
-c) It automatically triggers alerts  
+b) It automatically triggers alerts  
+c) Easier parsing, filtering, and correlation of logs  
 d) It replaces metrics collection  
 
 <details>
   <summary>Solution</summary>
-- b) Easier parsing, filtering, and correlation of logs
+- c) Easier parsing, filtering, and correlation of logs
 </details>
 
 ---
 
 **10. What is a best practice for metrics-driven alerting?**  
-a) Send alerts for every minor fluctuation  
-b) Define thresholds and tune alerts to avoid alert fatigue  
+a) Define thresholds and tune alerts to avoid alert fatigue  
+b) Send alerts for every minor fluctuation  
 c) Store metrics only in containers  
 d) Ignore cluster-level metrics  
 
 <details>
   <summary>Solution</summary>
-- b) Define thresholds and tune alerts to avoid alert fatigue
+- a) Define thresholds and tune alerts to avoid alert fatigue
 </details>

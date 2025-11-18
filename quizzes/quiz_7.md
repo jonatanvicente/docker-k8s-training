@@ -82,13 +82,13 @@ d) Tilt
 
 **7. Helm is mainly used for:**  
 a) Monitoring container logs  
-b) Packaging and deploying Kubernetes applications  
-c) Creating Docker images  
+b) Creating Docker images  
+c) Packaging and deploying Kubernetes applications  
 d) Managing cloud VMs  
 
 <details>
   <summary>Solution</summary>
-- b) Packaging and deploying Kubernetes applications
+- c) Packaging and deploying Kubernetes applications
 </details>
 
 ---
@@ -120,12 +120,12 @@ d) OpenShift
 ---
 
 **10. Tilt is mainly designed for:**  
-a) Live updates and iterative development in Kubernetes  
-b) Managing cloud-managed Kubernetes clusters  
-c) Running Docker images in production  
-d) Scanning images for vulnerabilities  
+a) Managing cloud-managed Kubernetes clusters  
+b) Running Docker images in production  
+c) Scanning images for vulnerabilities  
+d) Live updates and iterative development in Kubernetes  
 
 <details>
   <summary>Solution</summary>
-- a) Live updates and iterative development in Kubernetes
+- d) Live updates and iterative development in Kubernetes
 </details>
