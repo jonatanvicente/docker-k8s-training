@@ -6,5 +6,5 @@ spec:
   serviceAccountName: serviceaccounttest  #Bound with my own ServiceAccount
   containers:
       - name: cont1
-        image: nginx:alpine
+        image: nginx:latest
 

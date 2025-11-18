@@ -6,5 +6,5 @@ spec:
   containers:
   - name: trivy
     image: aquasec/trivy:latest
-    command: ["trivy", "image", "nginx:latest"]
+    command: ["trivy", "image", "nginx:trixie-perl"]
   restartPolicy: Never
