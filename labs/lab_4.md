@@ -60,7 +60,7 @@ When you create a ServiceAccount and associate it with a pod, an API token (hand
 **Steps:**
 
 * **1.** Create a Namespace (note that we will work in the default Namespace)
-* **2.** Create a ServiceAccount (`sa.yaml`)
+* **2.** Create a ServiceAccount
 * **3.** Create a pod linked to the ServiceAccount (`pod.yaml`)
 * **4.** Use the token from inside the pod
 
@@ -68,7 +68,6 @@ When you create a ServiceAccount and associate it with a pod, an API token (hand
 
 - Create a new ServiceAccount (**`kubectl create serviceaccount serviceaccounttest`**).
 - Check with **`kubectl get sa`** (there should be two) and **`kubectl get serviceaccounts/serviceaccounttest -o yaml`**
-	- Optionally, you can create a ServiceAccount using a manifest (**`kubectl apply -f sa.yaml`**). It can be created in the default namespace.
 - The ServiceAccount **does not** automatically have an associated token (since v1.31).
 
 **_Creating a Pod and Using the Token_**
