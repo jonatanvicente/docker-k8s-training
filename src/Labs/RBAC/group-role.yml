@@ -13,7 +13,7 @@ metadata:
   name: cluster-svc
 subjects:
 - kind: Group
-  name: dev # grupo designado en CN del certificado
+  name: dev # grupo designado en CN del certificado: RBAC no asigna un usuario a un grupo directamente
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

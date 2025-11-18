@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
       - name: worker
-        image: workshop_1-worker:latest
+        image: jonatanvicente:workshop_1-worker:latest
