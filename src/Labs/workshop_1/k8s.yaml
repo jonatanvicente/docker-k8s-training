@@ -5,4 +5,6 @@ metadata:
 spec:
   containers:
       - name: worker
-        image: jonatanvicente:workshop_1-worker:latest
+        image: workshop_1-worker:latest
+        imagePullPolicy: Never
+
