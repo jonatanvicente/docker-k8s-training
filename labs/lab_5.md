@@ -2,6 +2,28 @@
 
 **Goal:** Deep dive into Kubernetes architecture and configuration management.
 
+
+### 🧩 HPA Demo: Horizontal Pod Autoscaler
+
+**Steps:**
+
+1. Enable the metrics-server addon `minikube addons enable metrics-server`
+2. Apply the manifests:
+`kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f hpa.yaml`
+3. Check the initial status:
+`kubectl get hpa
+kubectl get pods`
+4. Generate load to triger pod scaling, launch a container with `kubectl run -it --rm load-generator --image=busybox -- sh`
+	- Inside the shell `while true; do wget -q -O- http://demo-svc; done`
+5. Observe autoscaling in real time (in another terminal): `kubectl get hpa -w`
+6. You can also check:
+`kubectl get deploy
+kubectl get pods -w`
+
+
+
 ---
 
 ### 🧩 ConfigMaps: Config management using cmd
