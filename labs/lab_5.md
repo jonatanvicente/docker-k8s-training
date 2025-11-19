@@ -8,10 +8,7 @@
 **Steps:**
 
 1. Enable the metrics-server addon `minikube addons enable metrics-server`
-2. Apply the manifests:
-`kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-kubectl apply -f hpa.yaml`
+2. From the HPA directory, apply the manifests using `kubectl apply -f .` 
 3. Check the initial status:
 `kubectl get hpa
 kubectl get pods`
