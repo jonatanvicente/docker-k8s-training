@@ -8,7 +8,7 @@ data:
     test: hola
     nginx: |
       server {
-            listen       80;
+            listen       8080;
             server_name  localhost;
 
             location / {
