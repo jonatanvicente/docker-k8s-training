@@ -36,7 +36,7 @@ d) Ensure all pods can communicate directly without NAT
 
 <details>
   <summary>Solution</summary>
-- b) Ensure all pods can communicate directly without NAT
+- d) Ensure all pods can communicate directly without NAT
 </details>
 
 ---
@@ -114,7 +114,7 @@ d) Replace ConfigMaps
 
 <details>
   <summary>Solution</summary>
-- b) Enable custom behavior like rewrites or rate limiting
+- a) Enable custom behavior like rewrites or rate limiting
 </details>
 
 ---
@@ -127,5 +127,5 @@ d) It only supports single-host networking
 
 <details>
   <summary>Solution</summary>
-- b) It provides more flexible traffic routing, including L4-L7, beyond HTTP
+- c) It provides more flexible traffic routing, including L4-L7, beyond HTTP
 </details>

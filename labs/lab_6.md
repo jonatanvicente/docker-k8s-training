@@ -5,6 +5,8 @@
 
 ---
 
+### Ingress & Ingress Controller
+
 ### 🧩 1. Ingress Controller installation
 
 **Steps:**
@@ -60,3 +62,36 @@
 - **Routing errors from Controller/Rules to Service:** Check the pods in the `ingress-nginx` namespace (the controller is one of them).
 - Check the Controller startup logs with `kubectl -n ingress-nginx logs -f ingress-nginx-controller-xxxxxxx`
 - When routing is correct, the logs show the path bindings and also incoming requests
+
+
+---
+
+## 🧩 Network Policies
+
+**Steps:**
+
+1. Start the Minikube cluster with `minikube start --cni=calico`. It will be necessary to delete the previous cluster.
+
+2. Run `kubectl apply -f pod-services.yaml` to deploy multiple pods and services.
+
+3. Verify that both the frontend pod and the tester pod can access the backend.
+
+```
+# Allowed test (frontend)
+kubectl exec -it frontend -- wget -qO- http://backend-svc:80
+# → Returns: Hello from backend
+
+# Allowed test (tester)
+kubectl exec -it tester -- wget -qO- http://backend-svc:80
+# → Returns: Hello from backend
+```
+4. Apply the NetworkPolicies `kubectl apply -f networkpolicies.yaml`
+5. Test execution:
+```
+# Allowed test (frontend)
+kubectl exec -it frontend -- wget -qO- http://backend-svc:80
+# → Returns: Hello from backend
+# Blocked test (tester)
+kubectl exec -it tester -- wget -qO- http://backend-svc:80
+# → Fails
+```
