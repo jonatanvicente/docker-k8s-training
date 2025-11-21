@@ -73,9 +73,9 @@ Deploy a multi-container application in Kubernetes that extends Exercise 1, demo
 <details>
   <summary>Solution</summary>
 
-- Remember import the image of exercise 1 using minikube image load workshop_1-worker:latest (or pulling from DockerHub registry; K8s cannot see the Docker daemon, Docker images are not shared with K8s). 
-- Execute kubectl apply -f .
-- Then execute kubectl port-forward service/web -n exercise2 8080:80
+- Remember import the image of exercise 1 using `minikube image load workshop_1-worker:latest` (or pulling from DockerHub registry; K8s cannot see the Docker daemon, Docker images are not shared with K8s). 
+- Execute `kubectl apply -f .  `
+- Then execute `kubectl port-forward service/web -n exercise2 30080:80`
 - Reach http://localhost:8080/
 
 </details>
