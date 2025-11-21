@@ -73,3 +73,13 @@ Deploy a multi-container application in Kubernetes that extends Exercise 1, demo
 - Reach http://localhost:8080/
 
 </details>
+
+
+---
+
+### ⚙️ Exercise 3 – Helm Template
+
+**Objective:** To create a Helm template
+
+1. Create and deploy a Helm template based on exercise number two.
+
