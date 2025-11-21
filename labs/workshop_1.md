@@ -66,7 +66,7 @@ Deploy a multi-container application in Kubernetes that extends Exercise 1, demo
 
 
 
-# <img src="images/exercise_2.png" alt="Structure"/>
+# <img src="./../images/exercise_2.png" alt="Structure"/>
 
 
 
