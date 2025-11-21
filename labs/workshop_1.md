@@ -64,6 +64,10 @@ Deploy a multi-container application in Kubernetes that extends Exercise 1, demo
 - Run multiple workers and discuss concurrency issues.
 - Monitor logs and resource usage with `kubectl logs` and `kubectl top pods`.
 
+![Structure](../images/exercise_2.png)
+
+
+
 <details>
   <summary>Solution</summary>
 
