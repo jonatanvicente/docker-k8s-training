@@ -83,3 +83,61 @@ Metrics in Grafana (CPU, memory, restarts) will now reflect this load in real ti
 1. Log into your Grafana installation
 2. Create new Dashboard, and import the existing Dashboard "Kubernetes Monitoring Overview" (attached)
 3. Review all panel and generate load to see metrics increase
+
+
+### 🧩 ArgoCD: Automatic deployments to the cluster
+
+1. **Install ArgoCD**
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+2. **Expose the ArgoCD server**
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+Now you can access the web interface at [https://localhost:8080](https://localhost:8080).
+
+3. **Get the initial password**
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
+4. **Create a simple Git repository**. It can be a public repository with an example deployment and service, for instance, an nginx
+
+5. **Create the ArgoCD application**
+
+From the ArgoCD web interface:
+
+* **New App**
+* **App name:** nginx-demo
+* **Project:** default
+* **Repository URL:** your Git repo URL
+* **Path:** folder where the manifests are located (use `.` if they are in the root)
+* **Cluster:** your current cluster
+* **Namespace:** default
+Click **Create** and then **Sync**.
+
+From the CLI:
+
+```bash
+argocd app create nginx-demo \
+  --repo https://github.com/argoproj/argocd-example-apps.git \
+  --path local-app \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace default
+
+```
+
+6. **Test changes**
+
+```bash
+kubectl get pods
+kubectl get svc
+```
+- Modify the deployment (for example, change replicas from 1 → 2) and commit.
+- In the ArgoCD interface, you will see it detects the change and allows you to synchronize it.
