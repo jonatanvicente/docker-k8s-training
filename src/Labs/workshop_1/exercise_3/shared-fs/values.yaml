@@ -1,0 +1,4 @@
+storageClassName: standard
+storageSize: 1Gi
+mountPath: /data
+image: busybox

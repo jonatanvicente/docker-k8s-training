@@ -1,0 +1,6 @@
+apiVersion: v2
+name: shared-fs
+description: Ejemplo sencillo de dos pods compartiendo un mismo filesystem mediante PVC
+type: application
+version: 0.1.0
+appVersion: "1.0"
