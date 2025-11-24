@@ -101,7 +101,7 @@ d) Collecting distributed traces and metrics from applications
 
 <details>
   <summary>Solution</summary>
-- b) Collecting distributed traces and metrics from applications
+- d) Collecting distributed traces and metrics from applications
 </details>
 
 ---
